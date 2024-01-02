@@ -100,14 +100,28 @@ const Bottom = styled.div`
 `;
 
 const Mine = (props) => {
+  const myname = localStorage.getItem("name");
+  const mymemberid = localStorage.getItem("memberId");
+
+  const nage = () => {
+    window.location.href = "/login";
+  };
+
+  const juri = () => {
+    window.location.href = "/login";
+  };
+
+  const ilro = () => {
+    window.location.href = "/reward";
+  };
   return (
     <>
       <W>
         <Image src={profile} alt="msg" />
         <WiteLetter>
           <Pro>
-            <Name>엔삐</Name>
-            <Id>@enfpie</Id>
+            <Name>{myname}</Name>
+            <Id>@{mymemberid}</Id>
             {/* <Name>{props.name}</Name>
                     <Id>@{props.id}</Id> */}
           </Pro>
@@ -124,10 +138,13 @@ const Mine = (props) => {
             <TextGray>버전</TextGray>
             <P>beta</P>
           </Label>
+          <Label>
+            <TextGray onClick={ilro}>나의 리워드</TextGray>
+          </Label>
           <hr />
           <Bottom>
-            <Button>로그아웃</Button>
-            <ButtonRed>회원탈퇴</ButtonRed>
+            <Button onClick={nage}>로그아웃</Button>
+            <ButtonRed onClick={juri}>회원탈퇴</ButtonRed>
           </Bottom>
         </WiteLetter>
       </W>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import backgroundImg from "../img/letterboximg.svg";
 import UserImg from "../img/userimg.svg";
+import axios from "axios";
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -10,7 +11,31 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 `;
+
 function LetterBox() {
+  const [letters, setLetters] = useState([]);
+
+  useEffect(() => {
+    const memberId = localStorage.getItem("memberId");
+
+    if (memberId) {
+      // Make a GET request to your API with memberId as a parameter
+      axios
+        .get(`http://43.201.221.221:8080/visitorComment`, {
+          params: {
+            memberId: memberId,
+          },
+        })
+        .then((response) => {
+          setLetters(response.data.result);
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error fetching letters:", error);
+        });
+    }
+  }, []);
+
   return (
     <>
       <GlobalStyle />
@@ -20,21 +45,29 @@ function LetterBox() {
           <LetterLay>
             <LetterTop>몇통(받아오기)의 편지가 도착함</LetterTop>
 
-            <LetterMessage>
-              <Ulay>
-                <UserName>유저 이름(받아오기)</UserName>
-                <Info>새로운 편지가 있습니다.</Info>
-                <User>
-                  <img src={UserImg} alt="유저 이미지" width={50} height={50} />
-                </User>
-              </Ulay>
-            </LetterMessage>
+            {letters.map((letter) => (
+              <LetterMessage key={letter.id}>
+                <Ulay>
+                  <UserName>{letter.senderName}</UserName>
+                  <Info>{letter.content}</Info>
+                  <User>
+                    <img
+                      src={UserImg}
+                      alt="유저 이미지"
+                      width={50}
+                      height={50}
+                    />
+                  </User>
+                </Ulay>
+              </LetterMessage>
+            ))}
           </LetterLay>
         </Box>
       </Cover>
     </>
   );
 }
+
 export default LetterBox;
 
 const Cover = styled.div`

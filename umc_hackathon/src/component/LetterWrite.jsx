@@ -115,8 +115,8 @@ const LetterWrite = (props) => {
       const response = await axios.post(
         "http://43.201.221.221:8080/visitorComment",
         {
-          // "ownerId": 0,
-          // "writerId": 0,
+          ownerId: 0,
+          writerId: localStorage.getItem("memberId"),
           content: "string",
         }
       );
@@ -125,6 +125,7 @@ const LetterWrite = (props) => {
       setIsWriteComplete(true);
     } catch (error) {
       console.log(error);
+      window.location.href = "/calender";
     }
   };
 
@@ -151,9 +152,9 @@ const LetterWrite = (props) => {
             <span>/500</span>
           </P>
           {inputCount > 0 && (
-            <Send type="submit" onSubmit={handleSubmit}>
+            <Send type="submit" onClick={handleSubmit}>
               <From>from</From>
-              <From>엔삐</From>
+              <From>내가</From>
               {/* <From>{props.writerId}</From> */}
               <SendText>보내기</SendText>
               <SendCaution>한 번 보낸 편지는 수정할 수 없어요.</SendCaution>
