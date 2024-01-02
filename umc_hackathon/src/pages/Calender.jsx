@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import userImg from "../img/userimg.svg";
-import CalenderBox from "../component/CalenderBox";
+
 import letter from "../img/letterimg.svg";
 import send from "../img/send.svg";
-
+import calenderImg from "../img/calenderboximg.svg";
 function Calender() {
+  useEffect(() => {
+    const memberId = localStorage.getItem("memberId");
+
+    axios
+      .get("http://43.201.221.221:8080/calendar", {
+        params: { memberId: memberId },
+      })
+      .then((response) => {
+        // API 응답 처리
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // 오류 처리
+        console.error("Error sending GET request:", error);
+      });
+  }, []);
+
   return (
     <>
       <UserInfo>
@@ -16,7 +34,9 @@ function Calender() {
       </UserInfo>
 
       <CalenderCover>
-        <CalenderBox />
+        <Cover>
+          <LittleBox></LittleBox>
+        </Cover>
       </CalenderCover>
 
       <FriendsZone>
@@ -35,6 +55,22 @@ function Calender() {
 
 export default Calender;
 
+const Cover = styled.div`
+  width: 320px;
+  height: 512px;
+  background: url(${calenderImg}) no-repeat center center fixed;
+  background-size: cover;
+
+  border-radius: 15px;
+  padding: 16px;
+`;
+
+const LittleBox = styled.div`
+  width: 55px;
+  height: 70px;
+  background-color: #f27781;
+  border-radius: 10px;
+`;
 const UserInfo = styled.div`
   width: 360px;
   height: 100px;

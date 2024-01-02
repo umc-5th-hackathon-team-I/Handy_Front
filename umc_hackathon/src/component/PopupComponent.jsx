@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LoginInput from "./LoginInputReal";
 import { useState } from "react";
 import logintrue from "../img/loginTrueBtn.svg";
+import axios from "axios";
 
 const ModalWrapper = styled.div`
   display: ${(props) => (props.visible ? "block" : "none")};
@@ -58,8 +59,26 @@ const PopupComponent = ({ visible, onClose }) => {
     setPassword(newValue);
   };
 
+  const handleLogin = () => {
+    axios
+      .post("http://43.201.221.221:8080/login", {
+        loginId: idValue,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.data.result.memberId);
+        localStorage.setItem("memberId", response.data.result.memberId);
+        window.location.href = "/calender";
+      })
+      .catch((error) => {
+        console.error("Error sending POST request:", error);
+      });
+  };
+
   const LoginBtn = styled.div`
     padding-top: 50px;
+    cursor: pointer;
   `;
 
   return (
@@ -82,7 +101,7 @@ const PopupComponent = ({ visible, onClose }) => {
               value={password}
               onChange={handlePasswordChange}
             />
-            <LoginBtn>
+            <LoginBtn onClick={handleLogin}>
               <img src={logintrue} alt="활성화 버튼" />
             </LoginBtn>
           </ModalContent>
