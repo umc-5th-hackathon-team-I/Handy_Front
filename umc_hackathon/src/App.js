@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import styled from "styled-components";
 import LoginPage from "./pages/Login";
 import Calender from "./pages/Calender";
@@ -16,7 +15,6 @@ function App() {
     <Container>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/calender" element={<Calender />} />
           <Route path="/invite" element={<Invite />} />
