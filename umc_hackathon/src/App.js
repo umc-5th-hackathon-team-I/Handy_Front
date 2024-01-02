@@ -7,6 +7,9 @@ import Calender from "./pages/Calender";
 import Invite from "./pages/Invite";
 import LetterBox from "./pages/LetterBox";
 import Reward from "./pages/Reward";
+import Join from "./pages/Join";
+import Letter from "./pages/Letter";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           <Route path="/invite" element={<Invite />} />
           <Route path="/letterbox" element={<LetterBox />} />
           <Route path="/reward" element={<Reward />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/letter" element={<Letter />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>
     </Container>
