@@ -36,7 +36,7 @@ function Join() {
     };
 
     axios
-      .post("https://handyteam.shop/signup", requestData)
+      .post("http://43.201.221.221:8080/signup", requestData)
       .then((response) => {
         console.log("Axios request successful:", response.data);
         window.location.href = "/login";
