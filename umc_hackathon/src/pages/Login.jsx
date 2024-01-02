@@ -22,6 +22,9 @@ function LoginPage() {
   const closePopup = () => {
     setPopupVisible(false);
   };
+  const location = () => {
+    window.location.href = "/join";
+  };
 
   return (
     <>
@@ -30,6 +33,7 @@ function LoginPage() {
         <Cover>
           <LoginZone>
             <img onClick={openPopup} src={loginButton} alt="로그인 버튼" />
+            <Join onClick={location}>회원가입하기</Join>
           </LoginZone>
         </Cover>
         <PopupComponent visible={popupVisible} onClose={closePopup} />
@@ -57,4 +61,8 @@ const C = styled.div`
   background: url(${backgroundImg}) no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
+`;
+
+const Join = styled.div`
+  padding-left: 120px;
 `;
