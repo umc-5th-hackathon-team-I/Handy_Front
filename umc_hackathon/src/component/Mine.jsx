@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import heartMsg from "../img/heartMsg.svg";
+import profile from "../img/profile.svg";
 
 const W = styled.div`
     display: flex;
@@ -10,52 +10,58 @@ const W = styled.div`
 
 const Image = styled.img`
     position: fixed;
-    top: 15%;
-    background-color: #ffffff;
-    border-radius: 50px;
-`
+    top: 25%;
+    z-index: 10;
+    margin-bottom: 100px;
+`;
 
 const WiteLetter = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    position: fixed;
+    top: 35%;
     width: 329px;
     height: 544px;
     border-radius: 15px;
-    margin-top: 150px;
-    padding-top: 50px;
+    padding-top: 100px;
+    padding: 30px;
     background-color: #ffffff;
     box-sizing: border-box;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.315);
 `;
 
-
+const Pro = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+`;
 
 const Name = styled.div`
     font-size: 15px;
     color: #333333;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 `;
 const Id = styled.div`
     font-size: 12px;
     color: #F27781;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 `;
 const Text = styled.div`
-    font-size: 15px;
+    font-size: 18px;
     color: #000000;
     font-weight: bold;
 `;
 
 const TextGray = styled.div`
-    font-size: 15px;
+    font-size: 18px;
     color: #ABABAB;
     font-weight: bold;
 `;
 
 const Button = styled.button`
-    font-size: 15px;
+    font-size: 18px;
     color: #000000;
     font-weight: bold;
     background: none;
@@ -63,7 +69,7 @@ const Button = styled.button`
 `;
 
 const ButtonRed = styled.button`
-    font-size: 15px;
+    font-size: 18px;
     color: #F27781;
     font-weight: bold;
     background: none;
@@ -73,7 +79,7 @@ const ButtonRed = styled.button`
 const P = styled.button`
     float: right;
     color: #AC66F2;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     background: none;
     border: none;
@@ -84,7 +90,7 @@ const Label = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     
 `;
 const Bottom = styled.div`
@@ -93,6 +99,8 @@ const Bottom = styled.div`
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
+    border-top: 1px solid #ECECEC;
+    padding: 20px;
     
 `;
 
@@ -101,12 +109,14 @@ const Mine = (props) => {
     return (
     <>
         <W>
-            <Image src={heartMsg} alt='msg'/>
+            <Image src={profile} alt='msg'/>
             <WiteLetter>
-                <>
-                    <Name>{props.name}</Name>
-                    <Id>{props.id}</Id>
-                </>
+                <Pro>
+                    <Name>엔삐</Name>
+                    <Id>@enfpie</Id>
+                    {/* <Name>{props.name}</Name>
+                    <Id>@{props.id}</Id> */}
+                </Pro>
             <Label>
                 <Text>알림 on/off</Text><P>OFF</P>
             </Label>

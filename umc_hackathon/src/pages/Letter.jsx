@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../img/letterBack.svg";
+import goback from "../img/mypageBack.svg";
 import LetterWrite from './../component/LetterWrite';
 import { createGlobalStyle } from "styled-components";
 
@@ -17,6 +18,7 @@ function Letter() {
       <GlobalStyle />
       <C>
         <Cover>
+            <img src={goback} alt="back"/>
             <LetterWrite/>
         </Cover>
       </C>

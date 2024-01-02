@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../img/letterBack.svg";
+import goback from "../img/mypageBack.svg";
 import { createGlobalStyle } from "styled-components";
 import Mine from "../component/Mine";
 
@@ -17,6 +18,7 @@ function MyPage() {
       <GlobalStyle />
       <C>
         <Cover>
+            <img src={goback} alt="back"/>
             <Mine/>
         </Cover>
       </C>
