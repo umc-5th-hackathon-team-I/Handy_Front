@@ -25,7 +25,6 @@ const Container = styled.div`
   width: 360px;
   height: 800px;
   @media (max-width: 360px) {
-    padding: 10px;
     font-size: 14px;
   }
 `;

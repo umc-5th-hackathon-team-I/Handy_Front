@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import LoginInput from "./LoginInput";
+import LoginInput from "./LoginInputReal";
 import { useState } from "react";
+import logintrue from "../img/loginTrueBtn.svg";
 
 const ModalWrapper = styled.div`
   display: ${(props) => (props.visible ? "block" : "none")};
@@ -17,23 +18,32 @@ const ModalWrapper = styled.div`
 
 const ModalContent = styled.div`
   background: white;
-  padding: 20px;
-  border-radius: 30px;
-  width: 350px;
+  width: 320px;
+  height: 300px;
+  border-radius: 20px;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.div`
   top: 10px;
   right: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  margin-left: 46%;
+  margin-top: 10px;
 `;
 
 const ModalCover = styled.div`
   margin-top: 50%;
+  margin-left: 5%;
+  text-align: center;
 `;
 
 const Title = styled.div`
   font-size: 30px;
   text-align: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
 `;
 
 const PopupComponent = ({ visible, onClose }) => {
@@ -48,14 +58,16 @@ const PopupComponent = ({ visible, onClose }) => {
     setPassword(newValue);
   };
 
-  const LoginBtn = styled.div``;
+  const LoginBtn = styled.div`
+    padding-top: 50px;
+  `;
 
   return (
     <div>
       <ModalWrapper visible={visible}>
         <ModalCover>
           <ModalContent>
-            <Title>로그인</Title>
+            <Title>LOGIN</Title>
             <LoginInput
               placeholder="아이디를 입력해주세요"
               type="text"
@@ -63,16 +75,19 @@ const PopupComponent = ({ visible, onClose }) => {
               onChange={handleEmailChange}
             />
             <br />
+            <br />
             <LoginInput
               placeholder="비밀번호를 입력해주세요"
               type="password"
               value={password}
               onChange={handlePasswordChange}
             />
-            <LoginBtn>로그인하기</LoginBtn>
-            <CloseButton onClick={onClose}>닫기</CloseButton>
+            <LoginBtn>
+              <img src={logintrue} alt="활성화 버튼" />
+            </LoginBtn>
           </ModalContent>
         </ModalCover>
+        <CloseButton onClick={onClose}>닫기</CloseButton>
       </ModalWrapper>
     </div>
   );
