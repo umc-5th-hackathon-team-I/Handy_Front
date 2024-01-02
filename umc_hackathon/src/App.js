@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import styled from "styled-components";
 import LoginPage from "./pages/Login";
 import Calender from "./pages/Calender";
+import Invite from "./pages/Invite";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/calender" element={<Calender />} />
+          <Route path="/invite" element={<Invite />} />
         </Routes>
       </Router>
     </Container>
