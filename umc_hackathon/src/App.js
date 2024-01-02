@@ -5,6 +5,7 @@ import styled from "styled-components";
 import LoginPage from "./pages/Login";
 import Calender from "./pages/Calender";
 import Invite from "./pages/Invite";
+import LetterBox from "./pages/LetterBox";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/calender" element={<Calender />} />
           <Route path="/invite" element={<Invite />} />
+          <Route path="/letterbox" element={<LetterBox />} />
         </Routes>
       </Router>
     </Container>
